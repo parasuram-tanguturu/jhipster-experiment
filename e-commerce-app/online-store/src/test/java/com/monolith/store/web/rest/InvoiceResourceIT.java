@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.monolith.store.IntegrationTest;
 import com.monolith.store.domain.Invoice;
+import com.monolith.store.domain.ProductOrder;
 import com.monolith.store.domain.enumeration.InvoiceStatus;
 import com.monolith.store.domain.enumeration.PaymentMethod;
 import com.monolith.store.repository.InvoiceRepository;
@@ -40,6 +41,9 @@ class InvoiceResourceIT {
 
     private static final String DEFAULT_DETAILS = "AAAAAAAAAA";
     private static final String UPDATED_DETAILS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE = "BBBBBBBBBB";
 
     private static final InvoiceStatus DEFAULT_STATUS = InvoiceStatus.PAID;
     private static final InvoiceStatus UPDATED_STATUS = InvoiceStatus.ISSUED;
@@ -80,10 +84,21 @@ class InvoiceResourceIT {
         Invoice invoice = new Invoice()
             .date(DEFAULT_DATE)
             .details(DEFAULT_DETAILS)
+            .code(DEFAULT_CODE)
             .status(DEFAULT_STATUS)
             .paymentMethod(DEFAULT_PAYMENT_METHOD)
             .paymentDate(DEFAULT_PAYMENT_DATE)
             .paymentAmount(DEFAULT_PAYMENT_AMOUNT);
+        // Add required entity
+        ProductOrder productOrder;
+        if (TestUtil.findAll(em, ProductOrder.class).isEmpty()) {
+            productOrder = ProductOrderResourceIT.createEntity(em);
+            em.persist(productOrder);
+            em.flush();
+        } else {
+            productOrder = TestUtil.findAll(em, ProductOrder.class).get(0);
+        }
+        invoice.setOrder(productOrder);
         return invoice;
     }
 
@@ -97,10 +112,21 @@ class InvoiceResourceIT {
         Invoice invoice = new Invoice()
             .date(UPDATED_DATE)
             .details(UPDATED_DETAILS)
+            .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .paymentMethod(UPDATED_PAYMENT_METHOD)
             .paymentDate(UPDATED_PAYMENT_DATE)
             .paymentAmount(UPDATED_PAYMENT_AMOUNT);
+        // Add required entity
+        ProductOrder productOrder;
+        if (TestUtil.findAll(em, ProductOrder.class).isEmpty()) {
+            productOrder = ProductOrderResourceIT.createUpdatedEntity(em);
+            em.persist(productOrder);
+            em.flush();
+        } else {
+            productOrder = TestUtil.findAll(em, ProductOrder.class).get(0);
+        }
+        invoice.setOrder(productOrder);
         return invoice;
     }
 
@@ -124,6 +150,7 @@ class InvoiceResourceIT {
         Invoice testInvoice = invoiceList.get(invoiceList.size() - 1);
         assertThat(testInvoice.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testInvoice.getDetails()).isEqualTo(DEFAULT_DETAILS);
+        assertThat(testInvoice.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testInvoice.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testInvoice.getPaymentMethod()).isEqualTo(DEFAULT_PAYMENT_METHOD);
         assertThat(testInvoice.getPaymentDate()).isEqualTo(DEFAULT_PAYMENT_DATE);
@@ -247,6 +274,7 @@ class InvoiceResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(invoice.getId().intValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].details").value(hasItem(DEFAULT_DETAILS)))
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].paymentMethod").value(hasItem(DEFAULT_PAYMENT_METHOD.toString())))
             .andExpect(jsonPath("$.[*].paymentDate").value(hasItem(DEFAULT_PAYMENT_DATE.toString())))
@@ -267,6 +295,7 @@ class InvoiceResourceIT {
             .andExpect(jsonPath("$.id").value(invoice.getId().intValue()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.details").value(DEFAULT_DETAILS))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.paymentMethod").value(DEFAULT_PAYMENT_METHOD.toString()))
             .andExpect(jsonPath("$.paymentDate").value(DEFAULT_PAYMENT_DATE.toString()))
@@ -295,6 +324,7 @@ class InvoiceResourceIT {
         updatedInvoice
             .date(UPDATED_DATE)
             .details(UPDATED_DETAILS)
+            .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .paymentMethod(UPDATED_PAYMENT_METHOD)
             .paymentDate(UPDATED_PAYMENT_DATE)
@@ -314,6 +344,7 @@ class InvoiceResourceIT {
         Invoice testInvoice = invoiceList.get(invoiceList.size() - 1);
         assertThat(testInvoice.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testInvoice.getDetails()).isEqualTo(UPDATED_DETAILS);
+        assertThat(testInvoice.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testInvoice.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testInvoice.getPaymentMethod()).isEqualTo(UPDATED_PAYMENT_METHOD);
         assertThat(testInvoice.getPaymentDate()).isEqualTo(UPDATED_PAYMENT_DATE);
@@ -388,7 +419,7 @@ class InvoiceResourceIT {
         Invoice partialUpdatedInvoice = new Invoice();
         partialUpdatedInvoice.setId(invoice.getId());
 
-        partialUpdatedInvoice.status(UPDATED_STATUS).paymentMethod(UPDATED_PAYMENT_METHOD).paymentDate(UPDATED_PAYMENT_DATE);
+        partialUpdatedInvoice.code(UPDATED_CODE).status(UPDATED_STATUS).paymentMethod(UPDATED_PAYMENT_METHOD);
 
         restInvoiceMockMvc
             .perform(
@@ -404,9 +435,10 @@ class InvoiceResourceIT {
         Invoice testInvoice = invoiceList.get(invoiceList.size() - 1);
         assertThat(testInvoice.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testInvoice.getDetails()).isEqualTo(DEFAULT_DETAILS);
+        assertThat(testInvoice.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testInvoice.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testInvoice.getPaymentMethod()).isEqualTo(UPDATED_PAYMENT_METHOD);
-        assertThat(testInvoice.getPaymentDate()).isEqualTo(UPDATED_PAYMENT_DATE);
+        assertThat(testInvoice.getPaymentDate()).isEqualTo(DEFAULT_PAYMENT_DATE);
         assertThat(testInvoice.getPaymentAmount()).isEqualByComparingTo(DEFAULT_PAYMENT_AMOUNT);
     }
 
@@ -425,6 +457,7 @@ class InvoiceResourceIT {
         partialUpdatedInvoice
             .date(UPDATED_DATE)
             .details(UPDATED_DETAILS)
+            .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .paymentMethod(UPDATED_PAYMENT_METHOD)
             .paymentDate(UPDATED_PAYMENT_DATE)
@@ -444,6 +477,7 @@ class InvoiceResourceIT {
         Invoice testInvoice = invoiceList.get(invoiceList.size() - 1);
         assertThat(testInvoice.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testInvoice.getDetails()).isEqualTo(UPDATED_DETAILS);
+        assertThat(testInvoice.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testInvoice.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testInvoice.getPaymentMethod()).isEqualTo(UPDATED_PAYMENT_METHOD);
         assertThat(testInvoice.getPaymentDate()).isEqualTo(UPDATED_PAYMENT_DATE);

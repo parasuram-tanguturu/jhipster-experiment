@@ -28,7 +28,7 @@
     <span jhiTranslate="storeApp.product.home.notFound">No products found</span>
   </div>
 
-<!--   <div class="table-responsive" id="entities" *ngIf="products && products.length > 0">
+  <div class="table-responsive" id="entities" *ngIf="products && products.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
@@ -42,7 +42,7 @@
             <span jhiTranslate="storeApp.product.productSize">Product Size</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col" jhiSortBy="image"><span jhiTranslate="storeApp.product.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="productCategory.id">
+          <th scope="col" jhiSortBy="productCategory.name">
             <span jhiTranslate="storeApp.product.productCategory">Product Category</span> <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col"></th>
@@ -65,7 +65,7 @@
           </td>
           <td>
             <div *ngIf="product.productCategory">
-              <a [routerLink]="['/product-category', product.productCategory?.id, 'view']">{{ product.productCategory?.id }}</a>
+              <a [routerLink]="['/product-category', product.productCategory?.id, 'view']">{{ product.productCategory?.name }}</a>
             </div>
           </td>
           <td class="text-right">
@@ -152,8 +152,8 @@
               </a>
               <small *ngIf="product.productCategory">
                 <a [routerLink]="['/product-category', product
-                .productCategory?.id, 'view']">
-                  Category:{{ product.productCategory?.id }}
+                .productCategory?.name, 'view']">
+                  Category:{{ product.productCategory?.name }}
                 </a>
               </small>
             </div>
@@ -183,6 +183,7 @@
       </a>
     </div>
   </div>
+
   <div *ngIf="products && products.length > 0">
     <div class="row justify-content-center">
       <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>

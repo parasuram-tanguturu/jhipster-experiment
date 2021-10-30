@@ -54,6 +54,9 @@ public class InvoiceService {
                 if (invoice.getDetails() != null) {
                     existingInvoice.setDetails(invoice.getDetails());
                 }
+                if (invoice.getCode() != null) {
+                    existingInvoice.setCode(invoice.getCode());
+                }
                 if (invoice.getStatus() != null) {
                     existingInvoice.setStatus(invoice.getStatus());
                 }
