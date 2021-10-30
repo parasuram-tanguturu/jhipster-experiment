@@ -22,7 +22,7 @@ module.exports = async (config, options, targetOptions) => {
   config.cache = {
     // 1. Set cache type to filesystem
     type: 'filesystem',
-    cacheDirectory: path.resolve(__dirname, '../build/webpack'),
+    cacheDirectory: path.resolve(__dirname, '../target/webpack'),
     buildDependencies: {
       // 2. Add your config as buildDependency to get cache invalidation on config change
       config: [
@@ -63,6 +63,7 @@ module.exports = async (config, options, targetOptions) => {
           https: tls,
           proxy: {
             target: `http${tls ? 's' : ''}://localhost:${targetOptions.target === 'serve' ? '4200' : '8080'}`,
+            ws: true,
             proxyOptions: {
               changeOrigin: false, //pass the Host header to the backend unchanged  https://github.com/Browsersync/browser-sync/issues/430
             },
@@ -123,6 +124,7 @@ module.exports = async (config, options, targetOptions) => {
       output: {
         groupBy: [
           { pattern: './src/main/webapp/i18n/en/*.json', fileName: './i18n/en.json' },
+          { pattern: './src/main/webapp/i18n/zh-cn/*.json', fileName: './i18n/zh-cn.json' },
           // jhipster-needle-i18n-language-webpack - JHipster will add/remove languages in this array
         ],
       },

@@ -18,10 +18,10 @@ spring:
     # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
     #active: testcontainers
   application:
-    name: store
+    name: blog
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:store;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:blog;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name:
     username:
     password:
@@ -57,13 +57,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: store-task-
+      thread-name-prefix: blog-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: store-scheduling-
+      thread-name-prefix: blog-scheduling-
       pool:
         size: 1
   thymeleaf:
@@ -81,7 +81,7 @@ server:
 
 jhipster:
   clientApp:
-    name: 'storeApp'
+    name: 'blogApp'
   logging:
     # To test json console appender
     use-json-format: false
@@ -97,7 +97,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: NjE0N2Q3ZWIyODQ4MGM0ZWQ1NDViZTU5NmM1YTRiMDI3MGQ0NmZkYWIzYmQ3NzE1MmIzMDE1ZDgzZDg4NTFiZmY5MjI4ZjA0NDkzNDkyMThjMGRmN2Y5Mjk5MzU1YmEwN2FiNTBmOThkMTUyZGI1NTIxMmM5NjNjZTc2ZmQzZDc=
+        base64-secret: ZGM4ZTY3ZDk5MjE3NjA0ZDcxOWYxOGVkYzg4YTBjNDYyOGVhNjdjMjY0MzIyMjNlZDEzNzM5ZDVkYWQ2NWI0OTdiMmJlNDIxZTc4MTc5MmYxYjkzODEzYTQ4YmY5NTU5MjczNTA4YmE4YWFkNDg3NDRiOWJhYjgxYjhkOTBjNzg=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
 # ===================================================================

@@ -17,7 +17,14 @@ logging:
   level:
     ROOT: INFO
     tech.jhipster: INFO
-    com.mycompany.store: INFO
+    com.monolith.store: INFO
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
 
 management:
   metrics:
@@ -31,16 +38,32 @@ spring:
       enabled: false
     livereload:
       enabled: false
+  cloud:
+    config:
+      retry:
+        initial-interval: 1000
+        max-interval: 2000
+        max-attempts: 100
+      uri: http://admin:${jhipster.registry.password}@localhost:8761/config
+      # name of the config server's property source (file.yml) that we want to use
+      name: store
+      profile: prod
+      label: main # toggle to switch to a different version of the configuration as stored in git
+      # it can be set to any label, branch or commit of the configuration source Git repository
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/store
-    username: store
+    url: jdbc:mysql://localhost:3306/store?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
     password:
     hikari:
       poolName: Hikari
       auto-commit: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
   jpa:
-    database-platform: tech.jhipster.domain.util.FixedPostgreSQL10Dialect
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
@@ -102,6 +125,8 @@ jhipster:
     hazelcast: # Hazelcast distributed cache
       time-to-live-seconds: 3600
       backup-count: 1
+  registry:
+    password: admin
   security:
     authentication:
       jwt:
@@ -110,7 +135,7 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: MThlMzY5ZTFmNWFhODlmNGIyYzMwYTY2YmM5ZmE2MmJiZGUzNjc5NGI0MTcyNDg4ZjY3MDAzYTM5MDJkYzg2ZjBiNzlkZGQ1YTA2MGI1YWUwNDQ3MmVlY2YyMmE5Y2U1OTkyM2M3NDIwNWY4NWI2NzUzODMxYzJiY2JjYTQ1ZTY=
+        base64-secret: OTk0YzA3MDEwMmY4ZjhmMzg3ZDBlYmI5OTliMDhkZGUyMjg0YWUzNmIzNWJlNzEwNzdmMTFmZmU2MDU4ZDA5YmFmNzZmNWFiMmJhN2Y4ZmVkMDFkNTY4N2Y2MWRjNTNhOGY0NmYxM2YzOGVlYmZhMTY2ZDU5ZmU0NjM5OGU2Y2E=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

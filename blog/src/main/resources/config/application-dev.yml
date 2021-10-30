@@ -18,7 +18,7 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    com.jhipster.demo.store: DEBUG
+    org.jhipster.blog: DEBUG
 
 spring:
   devtools:
@@ -32,8 +32,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./build/h2db/db/store;DB_CLOSE_DELAY=-1
-    username: store
+    url: jdbc:h2:file:./target/h2db/db/blog;DB_CLOSE_DELAY=-1
+    username: blog
     password:
     hikari:
       poolName: Hikari
@@ -74,7 +74,7 @@ jhipster:
   # CORS is only enabled by default with the "dev" profile
   cors:
     # Allow Ionic for JHipster by default (* no longer allowed in Spring Boot 2.4+)
-    allowed-origins: 'http://localhost:8100,https://localhost:8100,http://localhost:9000,https://localhost:9000,http://localhost:9060,https://localhost:9060'
+    allowed-origins: 'http://localhost:8100,http://localhost:9000'
     allowed-methods: '*'
     allowed-headers: '*'
     exposed-headers: 'Authorization,Link,X-Total-Count,X-${jhipster.clientApp.name}-alert,X-${jhipster.clientApp.name}-error,X-${jhipster.clientApp.name}-params'
@@ -84,7 +84,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: NjE0N2Q3ZWIyODQ4MGM0ZWQ1NDViZTU5NmM1YTRiMDI3MGQ0NmZkYWIzYmQ3NzE1MmIzMDE1ZDgzZDg4NTFiZmY5MjI4ZjA0NDkzNDkyMThjMGRmN2Y5Mjk5MzU1YmEwN2FiNTBmOThkMTUyZGI1NTIxMmM5NjNjZTc2ZmQzZDc=
+        base64-secret: ZGM4ZTY3ZDk5MjE3NjA0ZDcxOWYxOGVkYzg4YTBjNDYyOGVhNjdjMjY0MzIyMjNlZDEzNzM5ZDVkYWQ2NWI0OTdiMmJlNDIxZTc4MTc5MmYxYjkzODEzYTQ4YmY5NTU5MjczNTA4YmE4YWFkNDg3NDRiOWJhYjgxYjhkOTBjNzg=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

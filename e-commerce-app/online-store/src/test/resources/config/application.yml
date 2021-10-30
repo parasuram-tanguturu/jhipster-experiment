@@ -13,12 +13,22 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: store
+    instanceId: store:${spring.application.instance-id:${random.value}}
+
 spring:
   profiles:
     # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
     #active: testcontainers
   application:
     name: store
+  cloud:
+    config:
+      enabled: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:h2:mem:store;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
@@ -97,7 +107,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: MThlMzY5ZTFmNWFhODlmNGIyYzMwYTY2YmM5ZmE2MmJiZGUzNjc5NGI0MTcyNDg4ZjY3MDAzYTM5MDJkYzg2ZjBiNzlkZGQ1YTA2MGI1YWUwNDQ3MmVlY2YyMmE5Y2U1OTkyM2M3NDIwNWY4NWI2NzUzODMxYzJiY2JjYTQ1ZTY=
+        base64-secret: OTk0YzA3MDEwMmY4ZjhmMzg3ZDBlYmI5OTliMDhkZGUyMjg0YWUzNmIzNWJlNzEwNzdmMTFmZmU2MDU4ZDA5YmFmNzZmNWFiMmJhN2Y4ZmVkMDFkNTY4N2Y2MWRjNTNhOGY0NmYxM2YzOGVlYmZhMTY2ZDU5ZmU0NjM5OGU2Y2E=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
 # ===================================================================
