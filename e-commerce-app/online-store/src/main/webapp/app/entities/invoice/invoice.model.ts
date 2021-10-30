@@ -8,12 +8,13 @@ export interface IInvoice {
   id?: number;
   date?: dayjs.Dayjs;
   details?: string | null;
+  code?: string | null;
   status?: InvoiceStatus;
   paymentMethod?: PaymentMethod;
   paymentDate?: dayjs.Dayjs;
   paymentAmount?: number;
   shipments?: IShipment[] | null;
-  order?: IProductOrder | null;
+  order?: IProductOrder;
 }
 
 export class Invoice implements IInvoice {
@@ -21,12 +22,13 @@ export class Invoice implements IInvoice {
     public id?: number,
     public date?: dayjs.Dayjs,
     public details?: string | null,
+    public code?: string | null,
     public status?: InvoiceStatus,
     public paymentMethod?: PaymentMethod,
     public paymentDate?: dayjs.Dayjs,
     public paymentAmount?: number,
     public shipments?: IShipment[] | null,
-    public order?: IProductOrder | null
+    public order?: IProductOrder
   ) {}
 }
 

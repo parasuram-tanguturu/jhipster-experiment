@@ -29,6 +29,7 @@ describe('Invoice Service', () => {
       id: 0,
       date: currentDate,
       details: 'AAAAAAA',
+      code: 'AAAAAAA',
       status: InvoiceStatus.PAID,
       paymentMethod: PaymentMethod.CREDIT_CARD,
       paymentDate: currentDate,
@@ -84,6 +85,7 @@ describe('Invoice Service', () => {
           id: 1,
           date: currentDate.format(DATE_TIME_FORMAT),
           details: 'BBBBBB',
+          code: 'BBBBBB',
           status: 'BBBBBB',
           paymentMethod: 'BBBBBB',
           paymentDate: currentDate.format(DATE_TIME_FORMAT),
@@ -111,9 +113,9 @@ describe('Invoice Service', () => {
       const patchObject = Object.assign(
         {
           details: 'BBBBBB',
+          code: 'BBBBBB',
           status: 'BBBBBB',
-          paymentMethod: 'BBBBBB',
-          paymentAmount: 1,
+          paymentDate: currentDate.format(DATE_TIME_FORMAT),
         },
         new Invoice()
       );
@@ -141,6 +143,7 @@ describe('Invoice Service', () => {
           id: 1,
           date: currentDate.format(DATE_TIME_FORMAT),
           details: 'BBBBBB',
+          code: 'BBBBBB',
           status: 'BBBBBB',
           paymentMethod: 'BBBBBB',
           paymentDate: currentDate.format(DATE_TIME_FORMAT),
@@ -202,7 +205,7 @@ describe('Invoice Service', () => {
       });
 
       it('should add only unique Invoice to an array', () => {
-        const invoiceArray: IInvoice[] = [{ id: 123 }, { id: 456 }, { id: 10416 }];
+        const invoiceArray: IInvoice[] = [{ id: 123 }, { id: 456 }, { id: 61298 }];
         const invoiceCollection: IInvoice[] = [{ id: 123 }];
         expectedResult = service.addInvoiceToCollectionIfMissing(invoiceCollection, ...invoiceArray);
         expect(expectedResult).toHaveLength(3);

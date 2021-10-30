@@ -20,6 +20,7 @@
       "id": "ID",
       "date": "Date",
       "details": "Details",
+      "code": "Code",
       "status": "Status",
       "paymentMethod": "Payment Method",
       "paymentDate": "Payment Date",
