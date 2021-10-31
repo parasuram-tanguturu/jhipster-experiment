@@ -1,0 +1,63 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "clientFramework": "angularX",
+    "serverPort": "8080",
+    "serviceDiscoveryType": "eureka",
+    "skipUserManagement": false,
+    "withAdminUi": true,
+    "baseName": "store",
+    "buildTool": "gradle",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": ["en", "zh-cn", "ta"],
+    "messageBroker": false,
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "skipClient": false,
+    "testFrameworks": ["protractor"],
+    "websocket": false,
+    "enableGradleEnterprise": false,
+    "gradleEnterpriseHost": "",
+    "applicationType": "gateway",
+    "packageName": "com.microservices.store",
+    "packageFolder": "com/microservices/store",
+    "jhipsterVersion": "7.3.1",
+    "skipServer": false,
+    "clientPackageManager": "npm",
+    "dtoSuffix": "DTO",
+    "entitySuffix": "",
+    "reactive": true,
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "applicationIndex": 0,
+    "applications": {
+      "invoice": {
+        "serverPort": "8081",
+        "applicationIndex": 1
+      },
+      "notification": {
+        "serverPort": "8082",
+        "applicationIndex": 2
+      }
+    },
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "blueprints": [],
+    "otherModules": [],
+    "pages": [],
+    "nativeLanguage": "en",
+    "creationTimestamp": 1635699080342,
+    "monorepository": true,
+    "skipCommitHook": true,
+    "jwtSecretKey": "MWJlZDdlMjM3MTI3Zjc0N2Y3ZDc4YzA5Y2NkMDcxNWNmOGM5MTNlMDkwMjk2YzY2MTUxY2U4ODRmNmY4MzFjMDFjYjBiNDgwOGU1YWUxNTIxNWRjZTYwMWU4NGMyOTFjYzlkNzczOTcxNDdkOWI1NTc4YTM3NWYxODBlNjk5MmU=",
+    "devServerPort": 4200,
+    "entities": ["Customer", "Invoice", "Notification", "OrderItem", "Product", "ProductCategory", "ProductOrder", "Shipment"],
+    "lastLiquibaseTimestamp": 1635699560000
+  }
+}
