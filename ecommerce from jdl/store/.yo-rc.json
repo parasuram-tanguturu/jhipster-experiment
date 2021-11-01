@@ -1,0 +1,67 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "clientFramework": "react",
+    "serverPort": "8080",
+    "serviceDiscoveryType": "eureka",
+    "skipUserManagement": false,
+    "withAdminUi": true,
+    "baseName": "store",
+    "buildTool": "gradle",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": ["en"],
+    "messageBroker": false,
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "skipClient": false,
+    "testFrameworks": ["protractor"],
+    "websocket": false,
+    "enableGradleEnterprise": false,
+    "gradleEnterpriseHost": "",
+    "applicationType": "gateway",
+    "packageName": "com.jhipster.demo.store",
+    "packageFolder": "com/jhipster/demo/store",
+    "reactive": true,
+    "jhipsterVersion": "7.3.1",
+    "skipServer": false,
+    "clientPackageManager": "npm",
+    "dtoSuffix": "DTO",
+    "entitySuffix": "",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "applicationIndex": 0,
+    "applications": {
+      "product": {
+        "serverPort": "8081",
+        "applicationIndex": 1
+      },
+      "invoice": {
+        "serverPort": "8082",
+        "applicationIndex": 2
+      },
+      "notification": {
+        "serverPort": "8083",
+        "applicationIndex": 3
+      }
+    },
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "blueprints": [],
+    "otherModules": [],
+    "pages": [],
+    "nativeLanguage": "en",
+    "creationTimestamp": 1635735181104,
+    "monorepository": true,
+    "skipCommitHook": true,
+    "jwtSecretKey": "NGM4MDAzZDk0ZmI5OGEzMzFiMTY1YTcwZDk4MDZmYTE2NDUzNTRmYzVjZDE2OWE2ZDliZTQwNjhjOGFiOWU0YjM3MjE5MjI1Y2IxODVhNTY4ZTk0NTVkMDlhNDRiNmQ1MzBlOGJiYjdjYmVlZmFlN2UyMGQwZTg0ZmE1ZjlmMDM=",
+    "devServerPort": 9060,
+    "entities": ["Customer", "Invoice", "Notification", "OrderItem", "Product", "ProductCategory", "ProductOrder", "Shipment"],
+    "lastLiquibaseTimestamp": 1635735661000
+  }
+}
