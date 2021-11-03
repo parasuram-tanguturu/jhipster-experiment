@@ -1,0 +1,11 @@
+id;placed_date;status;code;customer_id
+1;2021-11-02T22:13:05;PENDING;deposit Station;1
+2;2021-11-02T23:10:54;CANCELLED;black;2
+3;2021-11-03T10:36:42;COMPLETED;Generic;3
+4;2021-11-02T19:53:04;COMPLETED;open-source hybrid;4
+5;2021-11-03T09:26:26;CANCELLED;mobile intermediate;5
+6;2021-11-03T08:01:05;CANCELLED;infrastructures incentivize quantify;6
+7;2021-11-03T04:05:50;CANCELLED;compress Fantastic Global;7
+8;2021-11-03T00:09:02;CANCELLED;streamline;8
+9;2021-11-03T12:00:59;CANCELLED;Applications Missouri deposit;9
+10;2021-11-03T01:30:50;COMPLETED;Danish Krone parse;10
