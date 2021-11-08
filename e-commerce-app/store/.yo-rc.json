@@ -52,12 +52,12 @@
     "otherModules": [],
     "pages": [],
     "nativeLanguage": "en",
-    "creationTimestamp": 1635699080342,
+    "creationTimestamp": 1635701162450,
     "monorepository": true,
     "skipCommitHook": true,
-    "jwtSecretKey": "MWJlZDdlMjM3MTI3Zjc0N2Y3ZDc4YzA5Y2NkMDcxNWNmOGM5MTNlMDkwMjk2YzY2MTUxY2U4ODRmNmY4MzFjMDFjYjBiNDgwOGU1YWUxNTIxNWRjZTYwMWU4NGMyOTFjYzlkNzczOTcxNDdkOWI1NTc4YTM3NWYxODBlNjk5MmU=",
+    "jwtSecretKey": "ZjkxMDQ5ODk4YzdmZjJlNzZhNzcyMDlhMzIzZDUyZGU4NDc4NTA5NjRlNzJiMjlmNTZkZjgxNThlZmE1ZTU1MjM3ZjUyNmZjYjU1NzZlNWZmY2Y5N2FmMmE2ZjkyZDNkODk4MDI0MzNmNDA0YTFiZTNmZGQ0MWQwNmNkODM0ZjY=",
     "devServerPort": 4200,
     "entities": ["Customer", "Invoice", "Notification", "OrderItem", "Product", "ProductCategory", "ProductOrder", "Shipment"],
-    "lastLiquibaseTimestamp": 1635699560000
+    "lastLiquibaseTimestamp": 1635701642000
   }
 }

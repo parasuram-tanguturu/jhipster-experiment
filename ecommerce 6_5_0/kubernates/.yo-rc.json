@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "invoice",
+      "notification",
+      "store"
+    ],
+    "directoryPath": "../",
+    "clusteredDbApps": [],
+    "serviceDiscoveryType": "eureka",
+    "jwtSecretKey": "MGJlNTA5NzhkNjk0Mzg4MTAxMzU4NWJiMjVlZmFkNTMwN2IxMmM2MjdmZjEwMjA3M2EwNWQzZDllNjUyMjk2MWFlNjBkYmVhY2I2ZDE5NGZkMDY1NzE3MjhjZjJiYjgzOWJhYQ==",
+    "dockerRepositoryName": "lnparasuram",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "jhipster",
+    "kubernetesServiceType": "LoadBalancer",
+    "ingressDomain": "",
+    "monitoring": "elk",
+    "istio": false
+  }
+}

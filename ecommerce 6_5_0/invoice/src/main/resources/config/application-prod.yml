@@ -30,7 +30,7 @@ management:
   metrics:
     export:
       prometheus:
-        enabled: false
+        enabled: true
 
 spring:
   devtools:
@@ -86,7 +86,7 @@ spring:
       probability: 1 # report 100% of traces
   zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
     base-url: http://localhost:9411
-    enabled: false
+    enabled: true
     locator:
       discovery:
         enabled: true
@@ -132,7 +132,7 @@ jhipster:
       time-to-live-seconds: 3600
       backup-count: 1
       management-center: # Full reference is available at: http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.html
-        enabled: false
+        enabled: true
         update-interval: 3
         url:
   security:
@@ -151,12 +151,12 @@ jhipster:
     base-url: http://my-server-url-to-change # Modify according to your server's URL
   metrics:
     logs: # Reports metrics in the logs
-      enabled: false
+      enabled: true
       report-frequency: 60 # in seconds
   logging:
-    use-json-format: false # By default, logs are not in Json format
+    use-json-format: true # By default, logs are not in Json format
     logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
-      enabled: false
+      enabled: true
       host: localhost
       port: 5000
       queue-size: 512

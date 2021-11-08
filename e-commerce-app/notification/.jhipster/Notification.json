@@ -45,5 +45,5 @@
   "microserviceName": "notification",
   "clientRootFolder": "notification",
   "databaseType": "mongodb",
-  "changelogDate": "20211031170509"
+  "changelogDate": "20211031172702"
 }

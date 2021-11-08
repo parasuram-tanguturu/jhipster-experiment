@@ -43,11 +43,11 @@
     "clientThemeVariant": "",
     "withAdminUi": false,
     "nativeLanguage": "en",
-    "creationTimestamp": 1635699849512,
+    "creationTimestamp": 1635701162487,
     "monorepository": true,
     "skipCommitHook": true,
-    "jwtSecretKey": "M2Q3ZWI0NTI3YzYxZDc2ZDNhNWY4OGRjZDkzODAwMmY3NjkwZTg3YzVmZjhmYjI5YWRhNGJkZjZiYTE0NmNhMjgwNWI2MzViZjgwMDM5NmFmZDY5MzEyODJlM2NmZWRlOTNiNjE4MjIzMWFmZTZhMmYzZjEzMjZmODBkMTA5OWU=",
+    "jwtSecretKey": "ODA0MDgyZWYxODkwZGVhNmNkNWU1N2RiYzJiMWI5OWJkNTdkNWRkZDRjYmFjMTBlYzI0NWY5OGM0NDE1ZTFiNzBiMTYyYjE3YzA5N2I1M2MzZWQ5MGU2Yzg0YTY5NzU1ZjA3NTI5ZTVhZTlhZGFmNjllMzUxMzAyZWRhNmZlMGI=",
     "entities": ["Notification"],
-    "lastLiquibaseTimestamp": 1635699909000
+    "lastLiquibaseTimestamp": 1635701222000
   }
 }

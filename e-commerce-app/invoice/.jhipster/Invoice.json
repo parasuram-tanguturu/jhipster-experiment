@@ -63,5 +63,5 @@
   "microserviceName": "invoice",
   "clientRootFolder": "invoice",
   "databaseType": "sql",
-  "changelogDate": "20211031170229"
+  "changelogDate": "20211031172702"
 }
